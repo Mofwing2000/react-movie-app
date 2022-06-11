@@ -1,0 +1,44 @@
+@use '../../scss/' as *;
+
+// html {
+//     scroll-behavior: smooth;
+//   }
+.detail {
+
+    & button {
+        cursor: pointer;
+    }
+
+    &__banner {
+        width: 100%;
+        padding-bottom: 50%;
+        background-size: cover;
+        position: relative;
+        margin-bottom: 2rem;
+
+        &__icon {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            color: $body-bg;
+            background-color: white;
+            // transform: translateX(-50%);
+            font-size: 6rem;
+            // border: 3px solid transparent;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: box-shadow .3s 0s ease;
+
+            &:hover {
+                // border: 9px solid rgb(235, 235, 235);
+                box-shadow: 0px 0px 4px 4px rgb(226, 226, 226);
+            }
+
+            &>a{
+                text-decoration: none;
+                color: inherit;
+            }
+        }
+    }
+}

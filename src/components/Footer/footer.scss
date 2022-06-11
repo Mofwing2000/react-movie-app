@@ -1,0 +1,48 @@
+@use '../../scss/' as *;
+
+.footer{
+    position: relative;
+    &::before{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba($color: #000000, $alpha: 0.7);
+        z-index: 10;
+    }
+    &__container{
+        position: relative;
+        z-index: 50;
+        & a{
+            transition: color 0.3s ease 0s;
+        }
+        @include flex(flex-start, space-around);
+        padding: 3rem 0;
+        &__logo{
+            font-size: 2.5rem;
+            font-weight: 600;
+
+            @include flex(center, unset);
+            img{
+                width: 50px;
+
+                @include tablet{
+                    width: 40px;
+                }
+                @include mobile{
+                    width: 30px;
+                }
+            }
+        }
+        &__help{
+            @include flex(unset, center);
+            flex-direction: column;
+        }
+        &__more{
+            @include flex(unset, center);
+            flex-direction: column;
+        }
+    }
+}

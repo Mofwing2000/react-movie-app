@@ -1,0 +1,42 @@
+@use '../../scss/' as *;
+.list-slider{
+    margin-bottom: 3rem;
+    
+    &--top{
+        
+        > a{
+            transition: color .3s 0s ease;
+        }
+        .swiper-container{
+            transform: translateX(10px)
+        }
+        @include flex(center,space-between);
+        margin-bottom: 2rem;
+
+        @include tablet{
+            padding: 0 2rem;
+        }
+        &__title{      
+            margin-left: 2rem;
+            color: $main-color;
+            font-size: 1.6rem;
+        }
+        &__more{
+            margin-right: 2rem;
+            border: 1px solid $main-color;
+            padding: 0.2rem 0.6rem;
+            border-radius: $border-radius;
+        }
+    }
+
+    &__item{
+        width: calc((100% - 120px) / 6)!important;
+        @include tablet{
+            width: calc((100% - 80px) / 4)!important;
+        }
+        
+        @include mobile{
+            width: calc((100% - 20px) / 2)!important;
+        }
+    }
+}

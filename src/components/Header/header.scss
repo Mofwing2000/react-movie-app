@@ -1,0 +1,169 @@
+@use '../../scss' as *;
+
+.header{
+    width: 100%;
+    height: $header-height;
+    transition: height 0.3s 0s ease,
+                background-color 0.3s 0s ease;
+    @include mobile{
+        @include flex(center, unset);
+    }
+
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    .header__burger{
+        display: none;
+        font-size: 3rem;
+        margin-left: 5px;
+        @include mobile{
+            display: inline-block;
+            position: relative;
+        }
+    }
+    &.shrink{
+        height: $header-shrink-height;
+        background-color: $body-bg;
+    }
+
+    a{
+        transition: color 0.2s 0s ease;
+    }
+    .header__container{
+        margin: 0 auto;
+        height: 100%;
+        @include flex(center, space-between);
+
+        @include mobile{
+            // flex-direction: column;
+            flex: 1;
+            height: auto;
+        }
+
+        .header__logo{
+            font-size: 2.5rem;
+            font-weight: 600;
+
+            @include flex(center, unset);
+
+            img{
+                width: 50px;
+
+                @include tablet{
+                    width: 40px;
+                }
+                @include mobile{
+                    width: 30px;
+                }
+            }
+        }
+
+        .header__nav{
+            height: 100%;
+            @include flex(center, space-between);
+
+            @include mobile{
+                position: absolute;
+                left: 0;
+                top: 100%;
+                flex-direction: column;
+                justify-content: unset;
+                width: 100%;
+                background-color: $body-bg;
+                z-index: 1000;
+                font-size: 2rem;
+                display: block;
+                height: auto;
+                transform: scaleY(0);
+                transition: transform 0.3s 0s ease-out;
+                transform-origin: top;
+                &.expand{
+                    transform: scaleY(1);
+                }
+            }
+            >li:not(:first-child){
+                margin-left:2rem;
+            }
+            >li{
+                height: inherit;
+                position: relative;
+                text-transform: uppercase;
+                @include flex(center, unset);
+
+                &:hover{
+                    color: $main-color;
+                }
+                &:hover .header__subNav{
+                    // display: block;
+                    opacity: 1;
+                    transform: scaleY(1);
+                }
+                
+                &::after{
+                    content: '';
+                    width: 0;
+                    position: absolute;
+                    top: 100%;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background-color: $main-color;
+                    height: 2px;
+                    transition: all 0.3s 0s ease-in;
+                }
+
+                &:hover::after,
+                &.active:after{
+                    width: 100%;
+                }
+
+                &.active{
+                    color: $main-color;
+                }
+            
+                @include mobile{
+                    width: 100%;
+                    @include flex(center,center);
+                    margin: 0 !important;
+                    height: 4rem;
+                }
+
+                .header__subNav{
+                    // display: none;
+                    position: absolute;
+                    top: 100%;
+                    left: 0;
+                    flex-wrap: wrap;
+                    width: max-content;
+                    color: $text-color;
+                    column-count: 2;
+                    text-transform: none;
+                    opacity: 0;
+                    overflow: hidden;
+                    transform-origin: top;
+                    transition: opacity .3s 0s ease, transform 0.3s 0s ease-out;
+                    transform: scaleY(0);
+                    @include mobile{
+                        // display: block;
+                        column-count: 1;
+                        width: 100%;
+                        background-color: $body-bg;
+                        padding-bottom: 10px;
+                        
+                    }
+                    
+                    >li{
+                        // width: fit-content;
+                        padding:0.4rem 0;
+                        width: auto;
+
+                        @include mobile{
+                            @include flex(center,center);
+                            padding-top: 1.5rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

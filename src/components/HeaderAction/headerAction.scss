@@ -1,0 +1,150 @@
+@use '../../scss/' as *;
+
+.header__action {
+    @include flex(center, unset);
+
+    .header__search {
+        position: relative;
+
+        .search__bar {
+            height: 2.4rem;
+            border: 0;
+            border-radius: 5px;
+            font-size: 1rem;
+            padding-left: .6rem;
+
+            @include tablet {
+                width: 11rem;
+            }
+
+            @include mobile {
+                width: 0;
+                padding-left: 0rem;
+
+                &.active {
+                    width: 15rem;
+
+                    &~.search__icon {
+                        color: #111;
+                        padding-left: .6rem;
+                    }
+                }
+            }
+        }
+
+        .search__icon {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(calc(-50% + 2px));
+            color: #111;
+            font-size: 1.5rem;
+            font-weight: 600;
+
+            @include mobile {
+                color: $text-color;
+                font-size: 2rem;
+            }
+        }
+
+        .search__results {
+            position: absolute;
+            background-color: $body-bg;
+            width: 125%;
+            display: none;
+
+            &.active {
+                display: block;
+            }
+
+            >li:not(:last-child) {
+                border-bottom: 1px solid rgba(255, 255, 255, .5);
+            }
+
+            &__item {
+                padding: 1rem .6rem;
+                transition: background-color 0.3s 0s ease;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+
+                &:hover {
+                    background-color: rgb(48, 48, 48);
+                }
+
+                >a {
+                    display: inline;
+
+                    >p {
+                        padding: 1rem .6rem;
+                        display: inline;
+                    }
+                }
+            }
+
+            >p {
+                padding: 1rem .6rem;
+                display: inline-block;
+            }
+        }
+    }
+
+    .user__action {
+        position: relative;
+        height: 2.4rem;
+        @include flex(center, center);
+
+        .user__icon {
+            margin-left: 20px;
+            font-size: 1.8rem;
+
+            &:hover {
+                color: $main-color;
+            }
+        }
+
+        &:hover .action__list {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .action__list {
+            @include flex(unset, center);
+            flex-direction: column;
+            position: absolute;
+            text-align: center;
+            padding: 1rem;
+            top: 100%;
+            right: 0;
+            width: 15rem;
+            background-color: rgb(32, 32, 32);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s 0s ease, visibility 0.3s 0s ease;
+            border-radius: 5px;
+            .user-name {
+                font-size: 1.4rem;
+                margin-bottom: 1rem;
+
+                color: $main-color;
+            }
+
+            .manage-account,.view-watchlist{
+                margin-bottom: .6rem;
+            }
+
+            .btn--logout {
+                cursor: pointer;
+                height: 30px;
+                width: 8rem;
+                background-color: $main-color;
+                border-radius: 5px;
+                border: 0;
+                margin: 0 auto;
+                display: block;
+                margin-top: 1rem;
+                color: $text-color;
+            }
+        }
+    }
+}

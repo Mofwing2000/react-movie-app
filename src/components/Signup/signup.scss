@@ -1,0 +1,47 @@
+@use '../../scss' as *;
+
+.signup__container{
+    margin:auto;
+    width: 100%;
+    height: 100vh;
+    @include flex(center, center);
+    form{
+        // display: flex;
+        height: 40rem;
+        width: 30rem;
+        @include flex(center, center);
+        flex-direction: column;
+        background-color: rgb(32, 32, 32);
+        border-radius: 10px;
+        >div{
+            width: 18rem;
+            label{
+                display: block;
+                margin-bottom: 0.4rem;
+            }
+            input{
+                height: 2rem;
+                width: 100%;
+                margin-bottom: 0.4rem;
+            }
+        }
+        
+        .signup__btn{
+            height: 30px;
+            width: 8rem;
+            background-color: #0074E4;
+            border: 0;
+            color: $text-color;
+            margin-top: 3rem;
+        }
+        .login-redirect{
+            margin-top: 1rem;
+            transition: color .3s 0s ease;
+        }
+        .error{
+            color:  $main-color;
+            display: block;
+            margin-bottom: 10px;
+        }
+    }
+}

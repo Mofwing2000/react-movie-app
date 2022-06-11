@@ -1,0 +1,103 @@
+@use '../../scss/' as *;
+.hero-slider{
+    margin-bottom: 3rem;
+    height: auto;
+    .hero-slider__item{
+        width: 100%;
+        position: relative;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        padding: 8rem 6rem;
+        
+        &::before{
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            @include overlay();
+        }
+        &__content{
+            @include flex(center, center);
+            position: relative;
+            &__info{
+                width: 60%;
+                padding: 0 3rem;
+                @include flex(unset,center);
+                flex-direction: column;
+                @include tablet{
+                    width: 100%;
+                }
+
+                &>:not(:first-child){
+                    margin-top: 2rem;
+                }
+                .title{
+                    font-size: 3rem;
+                    font-weight: 700;
+                    line-height: 1;
+
+                    @include tablet{
+                        font-size: 2rem;
+                    }
+                }
+                .score{
+                    width: 3rem;
+                    height: 3rem;
+                    display: inline-block;
+                    border-radius: 50%;
+                    font-size: 1.2rem;
+                    font-weight: 700;
+                    color: #f9f9f9;
+                    @include flex(center, center);
+                    &.bad{
+                        background-color: red;
+                    }
+
+                    &.average{
+                        background-color: rgb(255, 208, 0);
+                        //color: red;
+                    }
+
+                    &.good{
+                        background-color:forestgreen;
+                    }
+                }
+                .actions{
+                    &>:not(:first-child){
+                        margin-left: 1rem;
+                    }
+                    .btn{
+                        padding: 0.8rem 1.6rem;
+                        border-radius: $border-radius;
+                        outline: none;
+                        border: 0;
+                        font-weight: 700;
+                        color: $text-color;
+                        &.btn-view{
+                            background-color: $main-color;
+                        }
+                        &.btn-trailer{
+                            background-color: rgb(32, 173, 238);
+                        }
+                    }
+                }
+                @include tablet{
+                    width: 80%;
+                    height: 25rem;
+                }
+                @include mobile{
+                    width: 90%;
+                    padding: 0;
+                }
+            }
+            &__poster{
+                @include tablet{
+                    display: none;
+                }
+            }
+        }
+    }
+}

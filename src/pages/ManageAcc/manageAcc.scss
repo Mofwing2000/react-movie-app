@@ -1,0 +1,57 @@
+@use '../../scss/' as *;
+
+.account{
+    width: 400px;
+    margin: 10rem auto;
+    background-color: rgb(32, 32, 32);
+    border-radius: 10px;
+    padding: 3rem 0;
+    &__title{
+        color: $main-color;
+        text-align: center;
+        font-size: 1.6rem;
+        padding-bottom: 3rem;
+    }
+
+    &__email{
+        text-align: center;
+        padding-bottom: 2rem;
+    }
+
+    &__form{
+        padding: 0rem 2rem;
+
+        &__input{
+            >label{
+                color: $main-color;
+                margin: .8rem 0;
+                display: block;
+            }
+            >input[type=text],>input[type=password]{
+                display: block;
+                padding: .4rem;
+                font-size: 1rem;
+                width: 100%;
+            }
+            &--warning{
+                display: none;
+                color: $main-color;
+
+                &.active{
+                    display: block;
+                }
+            }
+
+        }
+        &__button{
+            cursor: pointer;
+            height: 30px;
+            width: 8rem;
+            background-color: #0074E4;
+            border: 0;
+            margin: 0 auto;
+            margin-top: 3rem;
+            display: block;
+        }
+    }
+}

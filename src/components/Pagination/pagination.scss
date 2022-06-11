@@ -1,0 +1,22 @@
+@use '../../scss/' as *;
+
+.pagination{
+    @include flex(center, center);
+
+    margin: 4rem 0;
+    color: $text-color;
+
+    & a:hover{
+        transition:color ease 0.3s 0s;
+        color: $main-color;
+    }
+
+    & div{
+        padding: 0.4rem 1rem;
+        background-color: #222121;
+
+        &.active{
+            color: $main-color;
+        }
+    }
+}
